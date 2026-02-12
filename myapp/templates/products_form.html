@@ -1,0 +1,32 @@
+{% extends "index.html" %}
+
+{% block title %}
+Products
+{% endblock %}
+
+
+{% block content %}
+
+<h1> 
+    {%if form.instance.pk %} 
+    Edit Product 
+    {%else%} 
+    Add New Product 
+    {%endif%}
+    <form method = "post" enctype="multipart/form-data" class="form">
+        {%  csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-warning" type="submit"> Submit </button>
+
+
+
+    </form>
+    <a href="{% url 'all_products' %}"> Back to All Product </a>
+
+
+</h1>
+
+
+{% endblock %}
+
+
