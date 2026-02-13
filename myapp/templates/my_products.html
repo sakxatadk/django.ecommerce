@@ -1,20 +1,11 @@
-{% extends "index.html" %}
-
-{% block title %}
-Products
-{% endblock %}
-
+{% extends 'index.html' %}
 {% block content %}
 
-<h1 class="mb-4">All Products</h1>
+<div class="container mt-4">
+    <h2>My Products</h2>
 
-
-
-<a class = "btn btn-primary mb-4" href =" {%url 'product_create' %} "> Sell Product </a>
-
-<div class="row">
-
-{% for product in products %}
+    <div class="row">
+        {% for product in products %}
     <div class="col-md-4 mb-4">
         <div class="card h-100">
 
@@ -25,8 +16,6 @@ Products
             <div class="card-body text-center">
                 <h5 class="card-title">{{ product.name }}</h5>
                 <p class="card-text">Price: Rs{{ product.price }}</p>
-                <a class = "btn btn-success"  href="#">Buy</a>
-                <a class = "btn btn-warning "  href="{% url 'add_to_cart' product.id %}">Add to Cart 🛒</a><br><br>
                 {%if product.user == user%}
                 <a class = "btn btn-primary"  href="{%url 'product_edit' product.id%}">Edit </a>
                 <a class = "btn btn-danger"  href="{%url 'product_delete' product.id%}">Delete</a>
@@ -37,9 +26,9 @@ Products
         </div>
     </div>
 {% empty %}
-    <p>No products found.</p>
+    <p>You haven't added any products yet.</p>
 {% endfor %}
-
+    </div>
 </div>
 
 {% endblock %}

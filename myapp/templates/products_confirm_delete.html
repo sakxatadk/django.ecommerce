@@ -9,8 +9,8 @@ Products
 <h1 class="text-center" mt-4> Are you sure that you want to delete the product ? </h1>
 
 <form method="post">
-    {%csrf_token%}
-    <button class="btn btn-danger">Delete </button>
-    <a class="btn btn-success" href="{ %urls 'all_products'%}"> Cancel </a>
+    {% csrf_token %}
+    <button class="btn btn-danger" type="submit">Delete </button>
+    <a class="btn btn-success" href="{% url 'all_products' %}"> Cancel </a>
 </form>
 {% endblock %}

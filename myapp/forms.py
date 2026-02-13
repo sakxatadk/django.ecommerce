@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
-        fields = ['name' , 'price','description' , 'image']
+        fields = ['category','name' , 'price','description' , 'image']
 
 
 class UserRegistrationForm(UserCreationForm):
@@ -14,3 +14,12 @@ class UserRegistrationForm(UserCreationForm):
     class Meta:
         model = User
         fields =('username','email','password1','password2')
+
+
+
+class AddToCartForm(forms.Form):
+    quantity = forms.IntegerField(
+        min_value=1,
+        initial=1,
+        widget=forms.NumberInput(attrs={'class': 'form-control'})
+    )

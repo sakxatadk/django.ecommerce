@@ -13,18 +13,19 @@ Products
     {%else%} 
     Add New Product 
     {%endif%}
-    <form method = "post" enctype="multipart/form-data" class="form">
-        {%  csrf_token %}
-        {{ form.as_p }}
-        <button class="btn btn-warning" type="submit"> Submit </button>
-
-
-
-    </form>
-    <a href="{% url 'all_products' %}"> Back to All Product </a>
-
-
 </h1>
+<form method = "POST" enctype="multipart/form-data" class="form">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn btn-warning" type="submit"> Submit </button>
+
+
+
+</form>
+<a href="{% url 'all_products' %}"> Back to All Product </a>
+
+
+
 
 
 {% endblock %}

@@ -35,7 +35,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Products</a>
+                        <a class="nav-link" href="{% url 'my_products' %}">MyProducts</a>
                     </li>
 
                     <li class="nav-item dropdown">
@@ -44,8 +44,11 @@
                             Categories
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Electronics</a></li>
-                            <li><a class="dropdown-item" href="#">Clothes</a></li>
+                            <li><a class="dropdown-item" href="{% url 'all_products' %}?category=electronics">Electronics</a></li>
+                            <li><a class="dropdown-item" href="{% url 'all_products' %}?category=clothes">Clothes</a></li>
+                            <li><a class="dropdown-item" href="{% url 'all_products' %}?category=others">Others</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="{% url 'all_products' %}">All Products</a></li>
                         </ul>
                     </li>
 
@@ -55,11 +58,12 @@
                     <input class="form-control me-2" type="search" placeholder="Search products" name="q" value="{{ request.GET.q|default:'' }}">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
-                <a class="btn mx-2" href="">🛒</a>
+                <a class="btn mx-2" href="{% url 'cart_view' %}">🛒</a>
                 {% if user.is_authenticated %}
                 <form method="post" action="{%url 'logout'%}">
                     {%csrf_token%}
                     <button class="btn btn-danger mx-2" type="submit">Logout </button>
+                </form>
                 {% else %}
                      <a class="btn btn-success mx-2" href="{%url 'login'%}">Login</a>
                     <a class="btn btn-success mx-2" href="{%url 'register'%}">Register</a>
