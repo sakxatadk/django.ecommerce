@@ -1,12 +1,37 @@
 {% extends "index.html" %}
 
 {% block content %}
-  <h2>Login Here</h2>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button class ="btn btn-primary" type="submit">Login</button>
-  </form>
-  <p> Don't have an account? <a href ="{%url 'register' %}"> Register here </a></p>
+{% load static %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
+
+<div class="login-section">
+    <div class="login-card">
+
+        <h3 class="login-title">Login Here</h3>
+
+        <form method="post">
+            {% csrf_token %}
+
+            <div class="mb-3">
+                <label class="form-label">Username</label>
+                {{ form.username }}
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Password</label>
+                {{ form.password }}
+            </div>
+
+            <button type="submit" class="btn btn-login w-100 mt-3">
+                Login
+            </button>
+        </form>
+
+        <div class="login-footer">
+            Don't have an account? <a href="{% url 'register' %}">Register here</a>
+        </div>
+
+    </div>
+</div>
 
 {% endblock %}
